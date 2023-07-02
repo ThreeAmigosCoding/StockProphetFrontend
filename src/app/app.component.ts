@@ -135,7 +135,14 @@ export class AppComponent implements OnInit{
           this.createAllCharts(value);
         }
       });
+    } else if(this.selectedModel === "DecisionTrees") {
+      this.stockService.getDecisionTreePredictions(this.stockCode, this.selectedPeriod).subscribe({
+        next: value => {
+          this.createAllCharts(value);
+        }
+      });
     }
+
   }
 
   createAllCharts(response: MyResponse) {

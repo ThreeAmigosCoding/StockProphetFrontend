@@ -20,4 +20,8 @@ export class StockService {
   getNeuralNetworkPredictions(companyCode: string, period: string): Observable<MyResponse> {
     return this.http.get<MyResponse>(this.domain + "neural-network/" + companyCode + "/" + period);
   }
+
+  getDecisionTreePredictions(companyCode: string, period: string): Observable<MyResponse> {
+    return this.http.get<MyResponse>(this.domain + "decision-tree/" + companyCode + "/" + period);
+  }
 }
