@@ -16,4 +16,8 @@ export class StockService {
   getLinearRegressionPredictions(companyCode: string, period: string): Observable<MyResponse> {
     return this.http.get<MyResponse>(this.domain + "linear/" + companyCode + "/" + period);
   }
+
+  getNeuralNetworkPredictions(companyCode: string, period: string): Observable<MyResponse> {
+    return this.http.get<MyResponse>(this.domain + "neural-network/" + companyCode + "/" + period);
+  }
 }

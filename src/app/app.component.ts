@@ -74,31 +74,31 @@ export class AppComponent implements OnInit{
       type: 'line',
 
       data: {// values on X-Axis
-        labels: labels, 
+        labels: labels,
 	       datasets: [
           {
             label: "Custom Prediction",
             data: customPredictions,
             borderColor: '#087E8B',
             fill: false
-            
+
           },
           {
             label: "Library Prediction",
             data: libraryPredictions,
             borderColor: '#FF6B35',
             fill: false
-            
+
           },
           {
             label: "Actual",
             data: actualValues,
             borderColor: '#81E979',
             fill: false
-          }  
+          }
         ]
       },
-      options: this.chartOptions   
+      options: this.chartOptions
     });
     switch(id) {
       case "OpenChart":
@@ -129,6 +129,12 @@ export class AppComponent implements OnInit{
           this.createAllCharts(value);
         }
       });
+    } else if(this.selectedModel === "NeuralNetworks") {
+      this.stockService.getNeuralNetworkPredictions(this.stockCode, this.selectedPeriod).subscribe({
+        next: value => {
+          this.createAllCharts(value);
+        }
+      });
     }
   }
 
@@ -145,7 +151,7 @@ export class AppComponent implements OnInit{
       };
       return date.toLocaleString(undefined, options);
     });
-    
+
     this.createChart("OpenChart", dateStrings, response.open.predictedCustom, response.open.predictedLibrary, response.open.actual);
     this.createChart("CloseChart", dateStrings, response.close.predictedCustom, response.close.predictedLibrary, response.close.actual);
     this.createChart("HighChart", dateStrings, response.high.predictedCustom, response.high.predictedLibrary, response.high.actual);
