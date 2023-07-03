@@ -1,1 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; padding: 0;}
+body { margin: 0; font-family: 'Poppins', sans-serif; background-color: #151515; color: #81E979;}
+body h1, body h2, body h3 {margin: 0;}
