@@ -22,6 +22,47 @@ export class AppComponent implements OnInit{
   public lowChart: any;
   public volumeChart: any;
 
+  public response: MyResponse = {
+    companyCode: '',
+    period: '',
+    dates: [],
+    open: {
+      predictedCustom: [],
+      predictedLibrary: [],
+      errorCustom: 0,
+      errorLibrary: 0,
+      actual: []
+    },
+    close: {
+      predictedCustom: [],
+      predictedLibrary: [],
+      errorCustom: 0,
+      errorLibrary: 0,
+      actual: []
+    },
+    high: {
+      predictedCustom: [],
+      predictedLibrary: [],
+      errorCustom: 0,
+      errorLibrary: 0,
+      actual: []
+    },
+    low: {
+      predictedCustom: [],
+      predictedLibrary: [],
+      errorCustom: 0,
+      errorLibrary: 0,
+      actual: []
+    },
+    volume: {
+      predictedCustom: [],
+      predictedLibrary: [],
+      errorCustom: 0,
+      errorLibrary: 0,
+      actual: []
+    }
+  }
+
   private chartOptions = {
     aspectRatio:2.5,
     scales: {
@@ -126,12 +167,14 @@ export class AppComponent implements OnInit{
     if (this.selectedModel==="LinearRegression") {
       this.stockService.getLinearRegressionPredictions(this.stockCode, this.selectedPeriod).subscribe({
         next: value => {
+          this.response = value;
           this.createAllCharts(value);
         }
       });
     } else if(this.selectedModel === "NeuralNetworks") {
       this.stockService.getNeuralNetworkPredictions(this.stockCode, this.selectedPeriod).subscribe({
         next: value => {
+          this.response = value;
           this.createAllCharts(value);
         }
       });
@@ -139,12 +182,14 @@ export class AppComponent implements OnInit{
     } else if(this.selectedModel === "DecisionTrees") {
       this.stockService.getDecisionTreePredictions(this.stockCode, this.selectedPeriod).subscribe({
         next: value => {
+          this.response = value;
           this.createAllCharts(value);
         }
       });
     } else if(this.selectedModel === "SVM") {
       this.stockService.getSupportVectorMachinePredictions(this.stockCode, this.selectedPeriod).subscribe({
         next: value => {
+          this.response = value;
           this.createAllCharts(value);
         }
       });

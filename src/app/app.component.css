@@ -53,3 +53,17 @@
 .chart-container canvas {
     width: 100%;
 }
+
+.error-container {
+    display: flex;
+    gap: 10px;
+}
+
+.error-container h3:first-child{
+    color:#FF6B35 ;
+}
+
+.error-container h3:last-child{
+    color:#087E8B ;
+}
+

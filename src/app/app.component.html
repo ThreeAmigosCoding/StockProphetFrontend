@@ -40,24 +40,44 @@
   <div class="chart-container">
     <canvas id="OpenChart" >{{ openChart }}</canvas>
   </div>
+  <div class="error-container" *ngIf="this.openChart">
+    <h3>Library error: {{ response.open.errorLibrary.toFixed(3) }}</h3>
+    <h3>Custom error: {{ response.open.errorCustom.toFixed(3) }}</h3>
+  </div>
 
   <h2 *ngIf="this.closeChart">Close</h2>
   <div class="chart-container">
     <canvas id="CloseChart" >{{ closeChart }}</canvas>
+  </div>
+  <div class="error-container" *ngIf="this.closeChart">
+    <h3>Library error: {{ response.close.errorLibrary.toFixed(3) }}</h3>
+    <h3>Custom error: {{ response.close.errorCustom.toFixed(3) }}</h3>
   </div>
 
   <h2 *ngIf="this.highChart">High</h2>
   <div class="chart-container">
     <canvas id="HighChart" >{{ highChart }}</canvas>
   </div>
+  <div class="error-container" *ngIf="this.highChart">
+    <h3>Library error: {{ response.high.errorLibrary.toFixed(3) }}</h3>
+    <h3>Custom error: {{ response.high.errorCustom.toFixed(3) }}</h3>
+  </div>
 
   <h2 *ngIf="this.lowChart">Low</h2>
   <div class="chart-container">
     <canvas id="LowChart" >{{ lowChart }}</canvas>
   </div>
+  <div class="error-container" *ngIf="this.lowChart">
+    <h3>Library error: {{ response.low.errorLibrary.toFixed(3) }}</h3>
+    <h3>Custom error: {{ response.low.errorCustom.toFixed(3) }}</h3>
+  </div>
 
-  <h2 *ngIf="this.volumeChart">Volume</h2>
+  <!-- <h2 *ngIf="this.volumeChart">Volume</h2>
   <div class="chart-container">
     <canvas id="VolumeChart" >{{ volumeChart }}</canvas>
   </div>
+  <div class="error-container" *ngIf="this.volumeChart">
+    <h3>Library error: {{ response.volume.errorLibrary.toFixed(3) }}</h3>
+    <h3>Custom error: {{ response.volume.errorCustom.toFixed(3) }}</h3>
+  </div> -->
 </div>
